@@ -6,10 +6,10 @@ import { TreasuryModal } from "@/app/_components/treasury-modal";
 export default function HomePage() {
   return (
     <>
-      {/*   <Header /> */}
+      <Header />
       <MainCointent />
       <Footer />
-      {/* <TreasuryModal /> */}
+      <TreasuryModal />
     </>
   );
 }

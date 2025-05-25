@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { type PrimitiveAtom, useAtom } from "jotai";
 
-export const useModal = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export const useModal = (initialState: PrimitiveAtom<boolean>) => {
+  const [isOpen, setIsOpen] = useAtom(initialState);
 
   const open = () => setIsOpen(true);
   const close = () => setIsOpen(false);

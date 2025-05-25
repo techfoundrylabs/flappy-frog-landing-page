@@ -18,7 +18,7 @@ export const Modal = ({
     <dialog className={cn("modal", isOpen ? "modal-open" : "")}>
       <div
         className={cn(
-          "modal-box w-1/2 max-w-5xl border-6 border-white/90 bg-[#1E43AA] text-white/90",
+          "modal-box ,lg:w-1/2 max-w-5xl border-6 border-white/90 bg-[#1E43AA] text-white/90",
           className,
         )}
       >
