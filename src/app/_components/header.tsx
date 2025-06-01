@@ -10,15 +10,16 @@ import { useGetTreasuryPoolData } from "@/hooks/use-treasury-pool";
 const COIN_SYMBOL = "ETH";
 
 export const Header = () => {
-  const { formattedTreasury, isLoading } = useGetTreasuryPoolData();
-  const { timeLeftFormatted, timeLeft } = useCountdown(1748244296 * 1000);
+  const { formattedTreasury, gameEndMs, isLoading, isSuccess } =
+    useGetTreasuryPoolData();
+  const { timeLeftFormatted, timeLeft } = useCountdown(gameEndMs);
   const { open } = useTreasuryModal();
 
   if (isLoading) return <Loader className="text-sm" />;
 
   return (
     <header className="top-0 flex w-full flex-col px-2 py-4 text-center text-white/90 md:pt-2 lg:absolute">
-      {timeLeft > 0 ? (
+      {timeLeft > 0 && isSuccess ? (
         <div className="flex w-full flex-col">
           <div className="flex w-full flex-row items-center justify-center gap-x-2">
             <span className="text-sm md:text-base">Treasury pool:</span>
@@ -28,7 +29,7 @@ export const Header = () => {
             <span className="text-sm md:text-base">{COIN_SYMBOL}</span>
           </div>
           <div className="flex w-full items-center justify-center space-x-2">
-            <span className="text-xs">Ends in {timeLeftFormatted}</span>
+            <span className="text-xs">Close in {timeLeftFormatted}</span>
             <button className="cursor-pointer" onClick={open}>
               <Info size={18} />
             </button>
