@@ -5,16 +5,21 @@ import { FlappyFrogABI } from "@/config/abi/flappy-frog-abi";
 import { TREASURY_ADDRESS } from "@/config/constants";
 
 export const useGetTreasuryPoolData = () => {
-  const { data, isLoading } = useReadContract({
+  const { data, isLoading, isSuccess } = useReadContract({
     address: TREASURY_ADDRESS,
     abi: FlappyFrogABI,
-    functionName: "getTreasuryBalance",
+    functionName: "getGameInfo",
     query: {
       staleTime: Infinity,
-      refetchInterval: 5000,
+      refetchInterval: 600_000,
     },
   });
-  const treasury = data as bigint;
+  const contractResponse = Array.isArray(data)
+    ? (data as [bigint, bigint])
+    : [0n, 0n];
+
+  const [treasury, gameEnd] = contractResponse;
   const formattedTreasury = formatEther(treasury ?? 0n);
-  return { treasury, formattedTreasury, isLoading };
+  const gameEndMs = gameEnd ? Number(gameEnd) : 0;
+  return { treasury, formattedTreasury, gameEndMs, isLoading, isSuccess };
 };
