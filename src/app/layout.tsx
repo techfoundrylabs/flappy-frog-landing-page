@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       "fc:frame": JSON.stringify({
         version: "next",
-        imageUrl: "https://flappyfrog.xyz/flappyfrog.png",
+        imageUrl: "https://miniapp.flappyfrog.xyz/flappyfrog.png",
         button: {
           title: `Launch Flappy Frog`,
           action: {
