@@ -8,6 +8,7 @@ const initialModalStateAtom = atom(false);
 
 export const useTreasuryModal = () => {
   const { isOpen, open, close } = useModal(initialModalStateAtom);
+
   return { isOpen, open, close };
 };
 

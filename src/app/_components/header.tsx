@@ -7,7 +7,7 @@ import { Loader } from "@/components/loader";
 import { useCountdown } from "@/hooks/use-countdown";
 import { useGetTreasuryPoolData } from "@/hooks/use-treasury-pool";
 
-const COIN_SYMBOL = "ETH";
+const COIN_SYMBOL = "USDC";
 
 export const Header = () => {
   const { formattedTreasury, gameEndMs, isLoading, isSuccess } =
@@ -24,15 +24,15 @@ export const Header = () => {
           <div className="flex w-full flex-row items-center justify-center gap-x-2">
             <span className="text-sm md:text-base">Treasury pool:</span>
             <span className="text-sm md:text-base">
-              {parseFloat(formattedTreasury).toFixed(4)}
+              {parseFloat(formattedTreasury).toFixed(2)}
             </span>
             <span className="text-sm md:text-base">{COIN_SYMBOL}</span>
           </div>
           <div className="flex w-full items-center justify-center space-x-2">
             <span className="text-xs">Close in {timeLeftFormatted}</span>
-            <button className="cursor-pointer" onClick={open}>
+            {/*             <button className="cursor-pointer" onClick={open}>
               <Info size={18} />
-            </button>
+            </button> */}
           </div>
         </div>
       ) : (
